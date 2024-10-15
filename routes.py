@@ -26,8 +26,16 @@ def gigs():
 def gallery():
     return render_template('gallery.html')
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
+    if request.method == 'POST':
+        name = request.form.get('name')
+        email = request.form.get('email')
+        subject = request.form.get('subject')
+        message = request.form.get('message')
+        # Here you would typically save this information to the database
+        # For now, we'll just return a success message
+        return jsonify({"success": True, "message": "Thank you for your message. We will get back to you soon!"})
     return render_template('contact.html')
 
 @app.route('/blog')

@@ -73,7 +73,7 @@ function sendContactForm(form) {
     })
     .then(data => {
         if (data.success) {
-            return 'Thank you for your message. We will get back to you soon!';
+            return data.message;
         } else {
             throw new Error(data.message);
         }
