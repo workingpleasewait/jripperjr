@@ -14,9 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            // Here you would typically send the form data to your backend
-            alert('Thank you for your message. We will get back to you soon!');
-            contactForm.reset();
+            sendContactForm(this).catch(handleError);
         });
     }
 });
@@ -40,7 +38,29 @@ function subscribeToNewsletter(email) {
             alert(data.message);
             document.getElementById('newsletter-form').reset();
         } else {
-            alert(data.message);
+            throw new Error(data.message);
+        }
+    });
+}
+
+function sendContactForm(form) {
+    const formData = new FormData(form);
+    return fetch('/contact', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            alert('Thank you for your message. We will get back to you soon!');
+            form.reset();
+        } else {
+            throw new Error(data.message);
         }
     });
 }
@@ -49,10 +69,18 @@ function subscribeToNewsletter(email) {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        try {
+            const targetElement = document.querySelector(this.getAttribute('href'));
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            } else {
+                throw new Error('Target element not found');
+            }
+        } catch (error) {
+            handleError(error);
+        }
     });
 });
 
@@ -64,9 +92,17 @@ if ('loading' in HTMLImageElement.prototype) {
     });
 } else {
     // Fallback for browsers that don't support lazy loading
-    const script = document.createElement('script');
-    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-    document.body.appendChild(script);
+    loadLazyLoadingScript().catch(handleError);
+}
+
+function loadLazyLoadingScript() {
+    return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+        script.onload = resolve;
+        script.onerror = reject;
+        document.body.appendChild(script);
+    });
 }
 
 // General error handler
@@ -78,5 +114,6 @@ function handleError(error) {
 // Global unhandled rejection handler
 window.addEventListener('unhandledrejection', function(event) {
     console.error('Unhandled rejection (promise: ', event.promise, ', reason: ', event.reason, ')');
-    alert('An unexpected error occurred. Please try again later.');
+    event.preventDefault();
+    handleError(event.reason);
 });
