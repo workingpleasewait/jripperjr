@@ -5,7 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
         newsletterForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const email = this.querySelector('input[type="email"]').value;
-            subscribeToNewsletter(email).catch(handleError);
+            subscribeToNewsletter(email)
+                .then(message => {
+                    alert(message);
+                    this.reset();
+                })
+                .catch(handleError);
         });
     }
 
@@ -14,7 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            sendContactForm(this).catch(handleError);
+            sendContactForm(this)
+                .then(message => {
+                    alert(message);
+                    this.reset();
+                })
+                .catch(handleError);
         });
     }
 });
@@ -35,8 +45,7 @@ function subscribeToNewsletter(email) {
     })
     .then(data => {
         if (data.success) {
-            alert(data.message);
-            document.getElementById('newsletter-form').reset();
+            return data.message;
         } else {
             throw new Error(data.message);
         }
@@ -57,8 +66,7 @@ function sendContactForm(form) {
     })
     .then(data => {
         if (data.success) {
-            alert('Thank you for your message. We will get back to you soon!');
-            form.reset();
+            return 'Thank you for your message. We will get back to you soon!';
         } else {
             throw new Error(data.message);
         }
@@ -69,17 +77,14 @@ function sendContactForm(form) {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        try {
-            const targetElement = document.querySelector(this.getAttribute('href'));
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            } else {
-                throw new Error('Target element not found');
-            }
-        } catch (error) {
-            handleError(error);
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            targetElement.scrollIntoView({
+                behavior: 'smooth'
+            });
+        } else {
+            console.warn(`Element with id "${targetId}" not found`);
         }
     });
 });
@@ -113,7 +118,7 @@ function handleError(error) {
 
 // Global unhandled rejection handler
 window.addEventListener('unhandledrejection', function(event) {
-    console.error('Unhandled rejection (promise: ', event.promise, ', reason: ', event.reason, ')');
     event.preventDefault();
+    console.error('Unhandled rejection:', event.reason);
     handleError(event.reason);
 });
