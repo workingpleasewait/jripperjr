@@ -1,6 +1,6 @@
 from flask import render_template, request, jsonify, redirect, url_for
 from app import app, db
-from models import Subscriber, TourDate, Album
+from models import Subscriber, GigDate, BandMember, BlogPost
 from sqlalchemy.exc import IntegrityError
 from datetime import datetime
 
@@ -10,16 +10,16 @@ def index():
 
 @app.route('/biography')
 def biography():
-    return render_template('biography.html')
+    band_members = BandMember.query.all()
+    return render_template('biography.html', band_members=band_members)
 
 @app.route('/discography')
 def discography():
-    albums = Album.query.order_by(Album.release_date.desc()).all()
-    return render_template('discography.html', albums=albums)
+    return render_template('discography.html')
 
-@app.route('/tour-dates')
-def tour_dates():
-    dates = TourDate.query.order_by(TourDate.date).all()
+@app.route('/gigs')
+def gigs():
+    dates = GigDate.query.order_by(GigDate.date).all()
     return render_template('tour_dates.html', dates=dates)
 
 @app.route('/gallery')
@@ -29,6 +29,11 @@ def gallery():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
+
+@app.route('/blog')
+def blog():
+    posts = BlogPost.query.order_by(BlogPost.date_posted.desc()).all()
+    return render_template('blog.html', posts=posts)
 
 @app.route('/subscribe', methods=['POST'])
 def subscribe():

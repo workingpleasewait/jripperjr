@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}J. Ripper Jr. - Professional Drummer{% endblock %}
+{% block title %}J. Ripper Jr. - Drummer of The Bleecker Street Rippers{% endblock %}
 
 {% block content %}
 <div class="jumbotron text-center">
     <h1 class="display-4">J. Ripper Jr.</h1>
-    <p class="lead">Professional Drummer & Performer</p>
+    <p class="lead">Drummer of The Bleecker Street Rippers</p>
     <img src="{{ url_for('static', filename='images/drummer.svg') }}" alt="J. Ripper Jr. Drumming" class="img-fluid my-4" style="max-width: 400px;">
-    <p>Experience the rhythm, feel the beat</p>
-    <a href="{{ url_for('tour_dates') }}" class="btn btn-primary btn-lg">Upcoming Shows</a>
+    <p>Embracing a new rhythm, living the dream</p>
+    <a href="{{ url_for('gigs') }}" class="btn btn-primary btn-lg">Upcoming Shows</a>
 </div>
 
 <section class="my-5">
@@ -17,27 +17,27 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">New Album Release</h5>
-                    <p class="card-text">Check out J. Ripper Jr.'s latest album "Rhythmic Fury" available now on all major platforms!</p>
-                    <a href="#" class="btn btn-primary">Listen Now</a>
+                    <h5 class="card-title">New Musical Journey</h5>
+                    <p class="card-text">Former CEO J. Ripper Jr. embarks on an exciting new career as the drummer for The Bleecker Street Rippers!</p>
+                    <a href="{{ url_for('biography') }}" class="btn btn-primary">Read More</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">World Tour Announced</h5>
-                    <p class="card-text">J. Ripper Jr. is hitting the road! Don't miss the chance to see him live in a city near you.</p>
-                    <a href="{{ url_for('tour_dates') }}" class="btn btn-primary">View Tour Dates</a>
+                    <h5 class="card-title">Upcoming Gigs</h5>
+                    <p class="card-text">The Bleecker Street Rippers are hitting the local scene! Don't miss the chance to see them live.</p>
+                    <a href="{{ url_for('gigs') }}" class="btn btn-primary">View Tour Dates</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Drum Clinic Series</h5>
-                    <p class="card-text">Join J. Ripper Jr. for an exclusive series of drum clinics and masterclasses.</p>
-                    <a href="#" class="btn btn-primary">Learn More</a>
+                    <h5 class="card-title">Band Practice Insights</h5>
+                    <p class="card-text">Follow J. Ripper Jr.'s journey as he learns the ropes of being in a band for the first time.</p>
+                    <a href="{{ url_for('blog') }}" class="btn btn-primary">Read Blog</a>
                 </div>
             </div>
         </div>
@@ -47,7 +47,7 @@
 <section class="my-5">
     <h2 class="text-center mb-4">Featured Video</h2>
     <div class="ratio ratio-16x9">
-        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="J. Ripper Jr. Live Performance" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="The Bleecker Street Rippers' First Rehearsal" allowfullscreen></iframe>
     </div>
 </section>
 {% endblock %}

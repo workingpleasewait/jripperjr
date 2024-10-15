@@ -1,30 +1,32 @@
 {% extends "base.html" %}
 
-{% block title %}Discography - J. Ripper Jr.{% endblock %}
+{% block title %}Discography - The Bleecker Street Rippers{% endblock %}
 
 {% block content %}
 <h1 class="mb-4">Discography</h1>
 
+<div class="alert alert-info" role="alert">
+  <h4 class="alert-heading">Coming Soon!</h4>
+  <p>The Bleecker Street Rippers, featuring J. Ripper Jr. on drums, are currently working on their debut album. Stay tuned for updates on our upcoming releases!</p>
+</div>
+
+<h2 class="mt-5 mb-4">Future Releases</h2>
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    {% for album in albums %}
     <div class="col">
         <div class="card h-100">
-            <img src="{{ url_for('static', filename='images/album_placeholder.svg') }}" class="card-img-top" alt="{{ album.title }}">
+            <img src="{{ url_for('static', filename='images/album_placeholder.svg') }}" class="card-img-top" alt="Upcoming Album">
             <div class="card-body">
-                <h5 class="card-title">{{ album.title }}</h5>
-                <p class="card-text">Released: {{ album.release_date.strftime('%B %d, %Y') }}</p>
-                <p class="card-text">{{ album.description }}</p>
+                <h5 class="card-title">Debut Album</h5>
+                <p class="card-text">The Bleecker Street Rippers are hard at work on their first studio album. J. Ripper Jr.'s unique drumming style will be showcased alongside the band's energetic rock and blues sound.</p>
             </div>
             <div class="card-footer">
-                <a href="#" class="btn btn-primary">Listen Now</a>
+                <small class="text-muted">Expected release: TBA</small>
             </div>
         </div>
     </div>
-    {% endfor %}
 </div>
 
-{% if not albums %}
-<p class="text-center">No albums available at the moment. Check back soon!</p>
-{% endif %}
+<h2 class="mt-5 mb-4">Live Recordings</h2>
+<p>While we don't have any official releases yet, you can catch snippets of our live performances on our <a href="#">YouTube channel</a>. These recordings capture the raw energy and excitement of The Bleecker Street Rippers' shows, featuring J. Ripper Jr.'s dynamic drumming.</p>
 
 {% endblock %}

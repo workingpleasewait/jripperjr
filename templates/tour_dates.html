@@ -1,9 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}Tour Dates - J. Ripper Jr.{% endblock %}
+{% block title %}Tour Dates - The Bleecker Street Rippers{% endblock %}
 
 {% block content %}
-<h1 class="mb-4">Tour Dates</h1>
+<h1 class="mb-4">Upcoming Gigs</h1>
+
+<div class="alert alert-info" role="alert">
+  <h4 class="alert-heading">Local Gigs and More!</h4>
+  <p>The Bleecker Street Rippers are hitting the local scene! Check out our upcoming performances and come support J. Ripper Jr. in his exciting new musical journey.</p>
+</div>
 
 <div class="table-responsive">
     <table class="table table-striped">
@@ -12,7 +17,6 @@
                 <th>Date</th>
                 <th>Venue</th>
                 <th>City</th>
-                <th>Country</th>
                 <th>Tickets</th>
             </tr>
         </thead>
@@ -22,8 +26,7 @@
                 <td>{{ date.date.strftime('%B %d, %Y') }}</td>
                 <td>{{ date.venue }}</td>
                 <td>{{ date.city }}</td>
-                <td>{{ date.country }}</td>
-                <td><a href="#" class="btn btn-sm btn-primary">Buy Tickets</a></td>
+                <td><a href="#" class="btn btn-sm btn-primary">Get Tickets</a></td>
             </tr>
             {% endfor %}
         </tbody>
@@ -31,7 +34,12 @@
 </div>
 
 {% if not dates %}
-<p class="text-center">No tour dates available at the moment. Check back soon!</p>
+<p class="text-center">No gigs scheduled at the moment. Check back soon for updates on our local performances!</p>
 {% endif %}
+
+<div class="mt-5">
+    <h2>Want to see us play?</h2>
+    <p>If you'd like to book The Bleecker Street Rippers for your venue or event, please get in touch with us through our <a href="{{ url_for('contact') }}">contact page</a>. We're always excited to bring our music to new audiences!</p>
+</div>
 
 {% endblock %}

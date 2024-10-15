@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}J. Ripper Jr. - Professional Drummer{% endblock %}</title>
-    <meta name="description" content="Official website of J. Ripper Jr., professional drummer and performer.">
+    <title>{% block title %}The Bleecker Street Rippers - Featuring J. Ripper Jr.{% endblock %}</title>
+    <meta name="description" content="Official website of The Bleecker Street Rippers, featuring J. Ripper Jr. on drums.">
     <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
@@ -13,8 +13,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ url_for('index') }}">
-                <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="J. Ripper Jr. Logo" width="30" height="30" class="d-inline-block align-top">
-                J. Ripper Jr.
+                <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="The Bleecker Street Rippers Logo" width="30" height="30" class="d-inline-block align-top">
+                The Bleecker Street Rippers
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,7 @@
                         <a class="nav-link" href="{{ url_for('discography') }}">Discography</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('tour_dates') }}">Tour Dates</a>
+                        <a class="nav-link" href="{{ url_for('gigs') }}">Gigs</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('gallery') }}">Gallery</a>
@@ -52,11 +52,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h5>J. Ripper Jr.</h5>
-                    <p>Professional Drummer & Performer</p>
+                    <h5>The Bleecker Street Rippers</h5>
+                    <p>Featuring J. Ripper Jr. on drums</p>
                 </div>
                 <div class="col-md-4">
-                    <h5>Follow Me</h5>
+                    <h5>Follow Us</h5>
                     <div class="social-icons">
                         <a href="#" class="me-2"><i data-feather="facebook"></i></a>
                         <a href="#" class="me-2"><i data-feather="twitter"></i></a>
@@ -77,7 +77,7 @@
             <hr>
             <div class="row">
                 <div class="col-12 text-center">
-                    <p>&copy; 2023 J. Ripper Jr. All rights reserved.</p>
+                    <p>&copy; 2024 The Bleecker Street Rippers. All rights reserved.</p>
                 </div>
             </div>
         </div>
