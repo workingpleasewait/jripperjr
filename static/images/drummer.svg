@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <circle cx="100" cy="100" r="95" fill="#444"/>
+  <circle cx="100" cy="100" r="85" fill="#333"/>
+  <circle cx="100" cy="100" r="75" fill="#222"/>
+  <circle cx="100" cy="100" r="65" fill="#111"/>
+  <line x1="30" y1="100" x2="170" y2="100" stroke="#fff" stroke-width="4"/>
+  <line x1="100" y1="30" x2="100" y2="170" stroke="#fff" stroke-width="4"/>
+  <circle cx="100" cy="100" r="10" fill="#fff"/>
+  <text x="100" y="190" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle">J. Ripper Jr.</text>
+</svg>

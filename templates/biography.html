@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Biography - J. Ripper Jr.{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Biography</h1>
+<div class="row">
+    <div class="col-md-4">
+        <img src="{{ url_for('static', filename='images/drummer.svg') }}" alt="J. Ripper Jr." class="img-fluid rounded mb-3">
+    </div>
+    <div class="col-md-8">
+        <p>J. Ripper Jr. is a world-renowned drummer known for his explosive style, technical prowess, and innovative approach to rhythm. Born into a musical family, J. Ripper Jr. picked up his first pair of drumsticks at the age of four and hasn't put them down since.</p>
+        
+        <p>Growing up in New Orleans, the birthplace of jazz, J. Ripper Jr. was immersed in a rich musical culture from an early age. He honed his skills playing in local jazz clubs and quickly gained a reputation as a child prodigy. By his teens, he was already touring with established acts and making a name for himself in the industry.</p>
+        
+        <p>J. Ripper Jr.'s unique style blends elements of jazz, rock, funk, and world music, creating a sound that is both familiar and groundbreaking. He has collaborated with some of the biggest names in the music industry and has been featured on numerous award-winning albums.</p>
+        
+        <p>Throughout his career, J. Ripper Jr. has received multiple accolades, including three Grammy Awards for Best Instrumental Performance. He has been featured on the cover of Modern Drummer magazine a record seven times and was inducted into the Modern Drummer Hall of Fame in 2020.</p>
+        
+        <p>When not on tour or in the recording studio, J. Ripper Jr. is passionate about music education. He regularly conducts drum clinics and masterclasses around the world, inspiring the next generation of drummers to push the boundaries of their craft.</p>
+    </div>
+</div>
+
+<section class="my-5">
+    <h2 class="mb-4">Career Highlights</h2>
+    <ul class="list-group">
+        <li class="list-group-item">1995: Released debut solo album "Rhythmic Revolution"</li>
+        <li class="list-group-item">1998: Joined world-famous rock band "The Beatmakers" as their touring drummer</li>
+        <li class="list-group-item">2003: Won first Grammy Award for Best Instrumental Performance</li>
+        <li class="list-group-item">2007: Launched signature drumstick line with Vic Firth</li>
+        <li class="list-group-item">2012: Performed at the opening ceremony of the Olympic Games</li>
+        <li class="list-group-item">2015: Released critically acclaimed instructional DVD "Mastering the Art of Rhythm"</li>
+        <li class="list-group-item">2020: Inducted into the Modern Drummer Hall of Fame</li>
+    </ul>
+</section>
+{% endblock %}

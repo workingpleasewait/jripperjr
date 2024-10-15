@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Discography - J. Ripper Jr.{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Discography</h1>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for album in albums %}
+    <div class="col">
+        <div class="card h-100">
+            <img src="{{ url_for('static', filename='images/album_placeholder.svg') }}" class="card-img-top" alt="{{ album.title }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ album.title }}</h5>
+                <p class="card-text">Released: {{ album.release_date.strftime('%B %d, %Y') }}</p>
+                <p class="card-text">{{ album.description }}</p>
+            </div>
+            <div class="card-footer">
+                <a href="#" class="btn btn-primary">Listen Now</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% if not albums %}
+<p class="text-center">No albums available at the moment. Check back soon!</p>
+{% endif %}
+
+{% endblock %}
