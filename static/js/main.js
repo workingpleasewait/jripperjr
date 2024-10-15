@@ -49,13 +49,6 @@ function subscribeToNewsletter(email) {
         } else {
             throw new Error(data.message);
         }
-    })
-    .catch(error => {
-        if (error.code === 4001) {
-            console.log('User cancelled the subscription.');
-            return 'Subscription cancelled. You can always subscribe later if you change your mind.';
-        }
-        throw error;
     });
 }
 
@@ -77,13 +70,6 @@ function sendContactForm(form) {
         } else {
             throw new Error(data.message);
         }
-    })
-    .catch(error => {
-        if (error.code === 4001) {
-            console.log('User cancelled sending the contact form.');
-            return 'Message sending cancelled. Feel free to try again later.';
-        }
-        throw error;
     });
 }
 
@@ -124,23 +110,22 @@ function loadLazyLoadingScript() {
     });
 }
 
-// General error handler
+// Updated error handler
 function handleError(error) {
     console.error('An error occurred:', error);
     if (error.code === 4001) {
         console.log('User cancelled the operation. This is likely due to a browser extension or security setting.');
+    } else if (error instanceof TypeError) {
+        console.log('A type error occurred. This might be due to unexpected data formats.');
+    } else if (error instanceof NetworkError) {
+        console.log('A network error occurred. Please check your internet connection.');
     } else {
-        alert('An error occurred. Please try again later.');
+        alert('An unexpected error occurred. Please try again later.');
     }
 }
 
 // Global unhandled rejection handler
 window.addEventListener('unhandledrejection', function(event) {
     event.preventDefault();
-    if (event.reason && event.reason.code === 4001) {
-        console.log('User rejected the request:', event.reason.message);
-    } else {
-        console.error('Unhandled rejection:', event.reason);
-        handleError(event.reason);
-    }
+    handleError(event.reason);
 });
