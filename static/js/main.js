@@ -113,6 +113,10 @@ function loadLazyLoadingScript() {
 // Updated error handler
 function handleError(error) {
     console.error('An error occurred:', error);
+    if (!error || Object.keys(error).length === 0) {
+        console.log('An empty error object was received. This might be due to a browser extension or security setting.');
+        return;
+    }
     if (error.code === 4001) {
         console.log('User cancelled the operation. This is likely due to a browser extension or security setting.');
     } else if (error instanceof TypeError) {
@@ -127,5 +131,9 @@ function handleError(error) {
 // Global unhandled rejection handler
 window.addEventListener('unhandledrejection', function(event) {
     event.preventDefault();
+    if (!event.reason || Object.keys(event.reason).length === 0) {
+        console.log('An empty error object was received in unhandledrejection. This might be due to a browser extension or security setting.');
+        return;
+    }
     handleError(event.reason);
 });
