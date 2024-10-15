@@ -9,7 +9,7 @@ class Base(DeclarativeBase):
 db = SQLAlchemy(model_class=Base)
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("FLASK_SECRET_KEY") or os.urandom(24)
+app.secret_key = os.environ.get("FLASK_SECRET_KEY") or "a secret key"
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
 app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
     "pool_recycle": 300,
@@ -22,6 +22,3 @@ with app.app_context():
     db.create_all()
 
 from routes import *
-
-# Ensure all static files are cached for better performance
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 31536000
