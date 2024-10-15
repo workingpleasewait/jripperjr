@@ -128,7 +128,7 @@ function loadLazyLoadingScript() {
 function handleError(error) {
     console.error('An error occurred:', error);
     if (error.code === 4001) {
-        alert('Operation cancelled. You can try again later if you change your mind.');
+        console.log('User cancelled the operation. This is likely due to a browser extension or security setting.');
     } else {
         alert('An error occurred. Please try again later.');
     }
@@ -139,7 +139,6 @@ window.addEventListener('unhandledrejection', function(event) {
     event.preventDefault();
     if (event.reason && event.reason.code === 4001) {
         console.log('User rejected the request:', event.reason.message);
-        handleError(event.reason);
     } else {
         console.error('Unhandled rejection:', event.reason);
         handleError(event.reason);
