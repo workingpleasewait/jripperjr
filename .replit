@@ -29,7 +29,7 @@ waitForPort = 5000
 
 [deployment]
 deploymentTarget = "static"
-publicDir = "static"
+publicDir = "templates"
 
 [[ports]]
 localPort = 5000
