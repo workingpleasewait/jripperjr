@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         newsletterForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const email = this.querySelector('input[type="email"]').value;
-            subscribeToNewsletter(email);
+            subscribeToNewsletter(email).catch(handleError);
         });
     }
 
@@ -22,14 +22,19 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function subscribeToNewsletter(email) {
-    fetch('/subscribe', {
+    return fetch('/subscribe', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: `email=${encodeURIComponent(email)}`
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
     .then(data => {
         if (data.success) {
             alert(data.message);
@@ -37,10 +42,6 @@ function subscribeToNewsletter(email) {
         } else {
             alert(data.message);
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred. Please try again later.');
     });
 }
 
@@ -67,3 +68,15 @@ if ('loading' in HTMLImageElement.prototype) {
     script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
     document.body.appendChild(script);
 }
+
+// General error handler
+function handleError(error) {
+    console.error('An error occurred:', error);
+    alert('An error occurred. Please try again later.');
+}
+
+// Global unhandled rejection handler
+window.addEventListener('unhandledrejection', function(event) {
+    console.error('Unhandled rejection (promise: ', event.promise, ', reason: ', event.reason, ')');
+    alert('An unexpected error occurred. Please try again later.');
+});
