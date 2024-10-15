@@ -7,37 +7,37 @@
     <h1 class="display-4">J. Ripper Jr.</h1>
     <p class="lead">Drummer of The Bleecker Street Rippers</p>
     <img src="{{ url_for('static', filename='images/drummer.svg') }}" alt="J. Ripper Jr. Drumming" class="img-fluid my-4" style="max-width: 400px;">
-    <p>Embracing a new rhythm, living the dream</p>
+    <p class="mb-4">Embracing a new rhythm, living the dream</p>
     <a href="{{ url_for('gigs') }}" class="btn btn-primary btn-lg">Upcoming Shows</a>
 </div>
 
 <section class="my-5">
     <h2 class="text-center mb-4">Latest News</h2>
     <div class="row">
-        <div class="col-md-4">
-            <div class="card">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
                 <div class="card-body">
                     <h5 class="card-title">New Musical Journey</h5>
                     <p class="card-text">Former CEO J. Ripper Jr. embarks on an exciting new career as the drummer for The Bleecker Street Rippers!</p>
-                    <a href="{{ url_for('biography') }}" class="btn btn-primary">Read More</a>
+                    <a href="{{ url_for('biography') }}" class="btn btn-outline-primary">Read More</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
                 <div class="card-body">
                     <h5 class="card-title">Upcoming Gigs</h5>
                     <p class="card-text">The Bleecker Street Rippers are hitting the local scene! Don't miss the chance to see them live.</p>
-                    <a href="{{ url_for('gigs') }}" class="btn btn-primary">View Tour Dates</a>
+                    <a href="{{ url_for('gigs') }}" class="btn btn-outline-primary">View Tour Dates</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
                 <div class="card-body">
                     <h5 class="card-title">Band Practice Insights</h5>
                     <p class="card-text">Follow J. Ripper Jr.'s journey as he learns the ropes of being in a band for the first time.</p>
-                    <a href="{{ url_for('blog') }}" class="btn btn-primary">Read Blog</a>
+                    <a href="{{ url_for('blog') }}" class="btn btn-outline-primary">Read Blog</a>
                 </div>
             </div>
         </div>
@@ -48,6 +48,25 @@
     <h2 class="text-center mb-4">Featured Video</h2>
     <div class="ratio ratio-16x9">
         <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="The Bleecker Street Rippers' First Rehearsal" allowfullscreen></iframe>
+    </div>
+</section>
+
+<section class="my-5">
+    <h2 class="text-center mb-4">Rock with Us</h2>
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <p class="lead">Join our mailing list for exclusive updates, behind-the-scenes content, and special offers!</p>
+        </div>
+        <div class="col-md-6">
+            <form id="newsletter-form-inline" class="row g-3">
+                <div class="col-auto">
+                    <input type="email" class="form-control" id="inlineFormInputGroup" placeholder="Your email">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </div>
+            </form>
+        </div>
     </div>
 </section>
 {% endblock %}
